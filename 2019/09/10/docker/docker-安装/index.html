@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="微服务,">
+  <meta name="keywords" content="微服务,docker,">
 
 
 
@@ -79,18 +79,23 @@
 
 
 
-<meta name="description" content="本篇博文主要记录一下自己入门学习微服务的心得,谈谈传统的单体应用的弊端，以及应用微服务化的优势。 传统的单体应用单体应用将产生什么弊端呢局限性对于大型的单体应用来说，随着时间的推移，整个项目的模块臃肿，每一次上线前意味着要增加修改新的功能模块，jar包与jar包之间的依赖关系越来越复杂，应用程序的规模也将减缓发展。应用程序越大，启动时间越长。从而使得修改bug难度增大，应用难以维护。 模块冲突，应">
-<meta name="keywords" content="微服务">
+<meta name="description" content="环境centos 7.3linux内核:7.8 安装在安装docker前最好yum包更到最新,使用yum update命令 安装必要工具1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo  添加软件源信息12yum-config-manager --add-repo https">
+<meta name="keywords" content="微服务,docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单体应用过渡到微服务">
-<meta property="og:url" content="http://yoursite.com/2019/09/06/微服务/index/index.html">
+<meta property="og:title" content="docker安装">
+<meta property="og:url" content="http://yoursite.com/2019/09/10/docker/docker-安装/index.html">
 <meta property="og:site_name" content="_blog">
-<meta property="og:description" content="本篇博文主要记录一下自己入门学习微服务的心得,谈谈传统的单体应用的弊端，以及应用微服务化的优势。 传统的单体应用单体应用将产生什么弊端呢局限性对于大型的单体应用来说，随着时间的推移，整个项目的模块臃肿，每一次上线前意味着要增加修改新的功能模块，jar包与jar包之间的依赖关系越来越复杂，应用程序的规模也将减缓发展。应用程序越大，启动时间越长。从而使得修改bug难度增大，应用难以维护。 模块冲突，应">
+<meta property="og:description" content="环境centos 7.3linux内核:7.8 安装在安装docker前最好yum包更到最新,使用yum update命令 安装必要工具1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo  添加软件源信息12yum-config-manager --add-repo https">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-24T10:58:19.523Z">
+<meta property="og:image" content="http://pybao0btj.bkt.clouddn.com/docker-01-01.png">
+<meta property="og:image" content="http://pybao0btj.bkt.clouddn.com/docker-01-hw2.png">
+<meta property="og:image" content="http://pybao0btj.bkt.clouddn.com/docker-01-hw1.png">
+<meta property="og:image" content="http://pybao0btj.bkt.clouddn.com/%7DPSBMEF@%28U~3%28%7D%7D08@%5B19%7BJ.png">
+<meta property="og:updated_time" content="2019-09-25T13:54:05.265Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单体应用过渡到微服务">
-<meta name="twitter:description" content="本篇博文主要记录一下自己入门学习微服务的心得,谈谈传统的单体应用的弊端，以及应用微服务化的优势。 传统的单体应用单体应用将产生什么弊端呢局限性对于大型的单体应用来说，随着时间的推移，整个项目的模块臃肿，每一次上线前意味着要增加修改新的功能模块，jar包与jar包之间的依赖关系越来越复杂，应用程序的规模也将减缓发展。应用程序越大，启动时间越长。从而使得修改bug难度增大，应用难以维护。 模块冲突，应">
+<meta name="twitter:title" content="docker安装">
+<meta name="twitter:description" content="环境centos 7.3linux内核:7.8 安装在安装docker前最好yum包更到最新,使用yum update命令 安装必要工具1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo  添加软件源信息12yum-config-manager --add-repo https">
+<meta name="twitter:image" content="http://pybao0btj.bkt.clouddn.com/docker-01-01.png">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/06/微服务/index/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/10/docker/docker-安装/">
 
 
 
 
 
-  <title>单体应用过渡到微服务 | _blog</title>
+  <title>docker安装 | _blog</title>
   
 
 
@@ -263,7 +268,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/06/微服务/index/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/docker/docker-安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sunneng">
@@ -280,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">单体应用过渡到微服务</h1>
+          <h1 class="post-title" itemprop="name headline">docker安装</h1>
         
 
         <div class="post-meta">
@@ -292,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-06T19:34:54+08:00">
-                2019-09-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T13:28:32+08:00">
+                2019-09-10
               </time>
             
 
@@ -352,11 +357,27 @@
       
 
       
-        <p>本篇博文主要记录一下自己入门学习微服务的心得,谈谈传统的单体应用的弊端，以及应用微服务化的优势。</p>
-<h2 id="传统的单体应用"><a href="#传统的单体应用" class="headerlink" title="传统的单体应用"></a>传统的单体应用</h2><h3 id="单体应用将产生什么弊端呢"><a href="#单体应用将产生什么弊端呢" class="headerlink" title="单体应用将产生什么弊端呢"></a>单体应用将产生什么弊端呢</h3><h4 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h4><p>对于大型的单体应用来说，随着时间的推移，整个项目的模块臃肿，每一次上线前意味着要增加修改新的功能模块，jar包与jar包之间的依赖关系越来越复杂，应用程序的规模也将减缓发展。应用程序越大，启动时间越长。从而使得修改bug难度增大，应用难以维护。</p>
-<h4 id="模块冲突，应用难扩展"><a href="#模块冲突，应用难扩展" class="headerlink" title="模块冲突，应用难扩展"></a>模块冲突，应用难扩展</h4><p>从计算和存储两方面来谈论这个问题。当A模块对应cpu的执行，B模块对应储存数据库,如果要引入其他模块就需要对硬件进行妥协。</p>
-<h4 id="可靠性"><a href="#可靠性" class="headerlink" title="可靠性"></a>可靠性</h4><p>当存在内存泄漏的情况，如果A模块陷入死循环，其他模块不能正常运行，从而导致整个系统瘫痪</p>
-<h4 id="新技术难以引入，重写难"><a href="#新技术难以引入，重写难" class="headerlink" title="新技术难以引入，重写难"></a>新技术难以引入，重写难</h4><p>当应用代码量太大，考虑使用新技术对代码重构时，无论选用哪种框架，时间、成本无疑成为重构障碍。</p>
+        <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>centos 7.3<br>linux内核:7.8</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在安装docker前最好yum包更到最新,使用yum update命令</p>
+<h2 id="安装必要工具"><a href="#安装必要工具" class="headerlink" title="安装必要工具"></a>安装必要工具</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加软件源信息"><a href="#添加软件源信息" class="headerlink" title="添加软件源信息"></a>添加软件源信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo（这里我用的阿里镜像）</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新云缓存"><a href="#更新云缓存" class="headerlink" title="更新云缓存"></a>更新云缓存</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum makecache fast</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装docker-ce"><a href="#安装docker-ce" class="headerlink" title="安装docker-ce"></a>安装docker-ce</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install docker-ce</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动docker后台服务"><a href="#启动docker后台服务" class="headerlink" title="启动docker后台服务"></a>启动docker后台服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker  -启动docker后台服务</span><br><span class="line">systemctl <span class="built_in">enable</span> docker      -查看是否启动成功</span><br></pre></td></tr></table></figure>
+
+<p>安装成功<br><img src="http://pybao0btj.bkt.clouddn.com/docker-01-01.png" alt></p>
+<h2 id="拉取helloworld镜像"><a href="#拉取helloworld镜像" class="headerlink" title="拉取helloworld镜像"></a>拉取helloworld镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//docker pull images 是抓取 image 文件，library/hello-world 是 image 文件在仓库里面的位置，其中 library 是 image 文件所在的组，hello-world 是 image 文件的名字</span><br><span class="line">docker pull library/hello-world </span><br><span class="line"></span><br><span class="line">// 运行hello-world这个镜像</span><br><span class="line">docker run hello-world</span><br><span class="line"></span><br><span class="line">// 显示所有容器</span><br><span class="line">docker ps -a</span><br><span class="line"></span><br><span class="line">//查看镜像列表</span><br><span class="line">docker image list</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://pybao0btj.bkt.clouddn.com/docker-01-hw2.png" alt><br><img src="http://pybao0btj.bkt.clouddn.com/docker-01-hw1.png" alt></p>
+<h2 id="加速镜像"><a href="#加速镜像" class="headerlink" title="加速镜像"></a>加速镜像</h2><p> 由于后期操作docker镜像会比较慢（比如拉取tomcat、nginx会比较慢），所以需要配置个国内镜像地址加速镜像资源的拉取,这里需要在 /etc/docker/daemon.json 中配置国内镜像地址，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [</span><br><span class="line">    <span class="string">"https://registry.docker-cn.com"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一:"></a>方式一:</h3><p>cd / //切换到系统目录<br>cd etc/docker //目录<br>vim daemon.json //将上面的信息添加到daemon.json<br>!wq //退出</p>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二:"></a>方式二:</h3><p>使用Linux终端可视化工具FlashFXP登录Linux,切换到/etc/docker目录下修改daemon.json文件<br><img src="http://pybao0btj.bkt.clouddn.com/%7DPSBMEF@%28U~3%28%7D%7D08@%5B19%7BJ.png" alt></p>
 
       
     </div>
@@ -376,6 +397,8 @@
           
             <a href="/tags/微服务/" rel="tag"># 微服务</a>
           
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
         </div>
       
 
@@ -387,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/05/go/index/" rel="next" title="基于go gin的mvc demo">
-                <i class="fa fa-chevron-left"></i> 基于go gin的mvc demo
+              <a href="/2019/09/06/微服务/index/" rel="next" title="单体应用过渡到微服务">
+                <i class="fa fa-chevron-left"></i> 单体应用过渡到微服务
               </a>
             
           </div>
@@ -397,8 +420,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/10/docker/docker-安装/" rel="prev" title="docker安装">
-                docker安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/12/docker/docker-镜像/" rel="prev" title="docker镜像">
+                docker镜像 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#传统的单体应用"><span class="nav-number">1.</span> <span class="nav-text">传统的单体应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单体应用将产生什么弊端呢"><span class="nav-number">1.1.</span> <span class="nav-text">单体应用将产生什么弊端呢</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#局限性"><span class="nav-number">1.1.1.</span> <span class="nav-text">局限性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模块冲突，应用难扩展"><span class="nav-number">1.1.2.</span> <span class="nav-text">模块冲突，应用难扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可靠性"><span class="nav-number">1.1.3.</span> <span class="nav-text">可靠性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新技术难以引入，重写难"><span class="nav-number">1.1.4.</span> <span class="nav-text">新技术难以引入，重写难</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装必要工具"><span class="nav-number">3.</span> <span class="nav-text">安装必要工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加软件源信息"><span class="nav-number">4.</span> <span class="nav-text">添加软件源信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新云缓存"><span class="nav-number">5.</span> <span class="nav-text">更新云缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装docker-ce"><span class="nav-number">6.</span> <span class="nav-text">安装docker-ce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动docker后台服务"><span class="nav-number">7.</span> <span class="nav-text">启动docker后台服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拉取helloworld镜像"><span class="nav-number">8.</span> <span class="nav-text">拉取helloworld镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加速镜像"><span class="nav-number">9.</span> <span class="nav-text">加速镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式一"><span class="nav-number">9.1.</span> <span class="nav-text">方式一:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式二"><span class="nav-number">9.2.</span> <span class="nav-text">方式二:</span></a></li></ol></li></ol></div>
             
 
           </div>
