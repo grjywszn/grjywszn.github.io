@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="打包方式war包、jar包 war用docker打包war,需要将war包上传到tomcat webapps目录下,我们可以通过ftp工具或命令将我们事先打好的war包(这里自行百度war打包)上传到centos,然后复制到webapps目录下,tomcat会自动对其进行解压，最后启动并访问端口即可。 吧war上传到centos,这里上传到根目录root下的docker文件下1234 // doc">
+<meta name="description" content="打包方式war包、jar包 1拷贝war到容器中用docker打包war,需要将war包上传到tomcat webapps目录下,我们可以通过ftp工具或命令将我们事先打好的war包(这里自行百度war打包)上传到centos,然后复制到webapps目录下,tomcat会自动对其进行解压，最后启动并访问端口即可。 吧war上传到centos,这里上传到根目录root下的docker文件下1234">
 <meta name="keywords" content="微服务,docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker打包">
 <meta property="og:url" content="http://yoursite.com/2019/09/13/docker/docker-打包/index.html">
 <meta property="og:site_name" content="_blog">
-<meta property="og:description" content="打包方式war包、jar包 war用docker打包war,需要将war包上传到tomcat webapps目录下,我们可以通过ftp工具或命令将我们事先打好的war包(这里自行百度war打包)上传到centos,然后复制到webapps目录下,tomcat会自动对其进行解压，最后启动并访问端口即可。 吧war上传到centos,这里上传到根目录root下的docker文件下1234 // doc">
+<meta property="og:description" content="打包方式war包、jar包 1拷贝war到容器中用docker打包war,需要将war包上传到tomcat webapps目录下,我们可以通过ftp工具或命令将我们事先打好的war包(这里自行百度war打包)上传到centos,然后复制到webapps目录下,tomcat会自动对其进行解压，最后启动并访问端口即可。 吧war上传到centos,这里上传到根目录root下的docker文件下1234">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-01.png">
 <meta property="og:image" content="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-02.png">
@@ -93,10 +93,14 @@
 <meta property="og:image" content="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-04.png">
 <meta property="og:image" content="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-05.png">
 <meta property="og:image" content="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-06.png">
-<meta property="og:updated_time" content="2019-10-21T14:45:09.398Z">
+<meta property="og:image" content="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-07.png">
+<meta property="og:image" content="http://yoursite.com/images/1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/docker-dabao-jar-02.png">
+<meta property="og:image" content="http://yoursite.com/images/docker-dabao-jar-03.png">
+<meta property="og:updated_time" content="2019-10-29T15:04:26.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker打包">
-<meta name="twitter:description" content="打包方式war包、jar包 war用docker打包war,需要将war包上传到tomcat webapps目录下,我们可以通过ftp工具或命令将我们事先打好的war包(这里自行百度war打包)上传到centos,然后复制到webapps目录下,tomcat会自动对其进行解压，最后启动并访问端口即可。 吧war上传到centos,这里上传到根目录root下的docker文件下1234 // doc">
+<meta name="twitter:description" content="打包方式war包、jar包 1拷贝war到容器中用docker打包war,需要将war包上传到tomcat webapps目录下,我们可以通过ftp工具或命令将我们事先打好的war包(这里自行百度war打包)上传到centos,然后复制到webapps目录下,tomcat会自动对其进行解压，最后启动并访问端口即可。 吧war上传到centos,这里上传到根目录root下的docker文件下1234">
 <meta name="twitter:image" content="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-01.png">
 
 
@@ -360,7 +364,7 @@
 
       
         <h2 id="打包方式"><a href="#打包方式" class="headerlink" title="打包方式"></a>打包方式</h2><p>war包、jar包</p>
-<h3 id="war"><a href="#war" class="headerlink" title="war"></a>war</h3><p>用docker打包war,需要将war包上传到tomcat webapps目录下,我们可以通过ftp工具或命令将我们事先打好的war包(这里自行百度war打包)上传到centos,然后复制到webapps目录下,tomcat会自动对其进行解压，最后启动并访问端口即可。</p>
+<h3 id="1拷贝war到容器中"><a href="#1拷贝war到容器中" class="headerlink" title="1拷贝war到容器中"></a>1拷贝war到容器中</h3><p>用docker打包war,需要将war包上传到tomcat webapps目录下,我们可以通过ftp工具或命令将我们事先打好的war包(这里自行百度war打包)上传到centos,然后复制到webapps目录下,tomcat会自动对其进行解压，最后启动并访问端口即可。</p>
 <h4 id="吧war上传到centos-这里上传到根目录root下的docker文件下"><a href="#吧war上传到centos-这里上传到根目录root下的docker文件下" class="headerlink" title="吧war上传到centos,这里上传到根目录root下的docker文件下"></a>吧war上传到centos,这里上传到根目录root下的docker文件下</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> // docker run -d -p 8088:8080 docker.io/tomcat 事先启动了tomcat</span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">cd</span> docker </span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
 
 <p><img src="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-01.png" alt><br><img src="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-02.png" alt></p>
@@ -369,6 +373,34 @@
 <p><img src="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-03.png" alt><br><img src="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-04.png" alt></p>
 <h4 id="查看war是否上传成功"><a href="#查看war是否上传成功" class="headerlink" title="查看war是否上传成功"></a>查看war是否上传成功</h4><p>以交互的方式进行指定内部，切换到webapps目录，查看是否有war包<br><img src="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-05.png" alt></p>
 <h4 id="访问端口-项目名"><a href="#访问端口-项目名" class="headerlink" title="访问端口+项目名"></a>访问端口+项目名</h4><p><img src="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-06.png" alt></p>
+<h3 id="2挂载目录启动war"><a href="#2挂载目录启动war" class="headerlink" title="2挂载目录启动war"></a>2挂载目录启动war</h3><p>将war包（绝对路径）自动映射到镜像容器中</p>
+<pre><code class="bash">docker run -d -p 8089:8080 -v /root/docker:/usr/<span class="built_in">local</span>/tomcat/webapps --restart=always docker.io/tomcat</code></pre>
+<p> <img src="http://pybao0btj.bkt.clouddn.com/docker-dabao-war-07.png" alt></p>
+<h3 id="dockerfile"><a href="#dockerfile" class="headerlink" title="dockerfile"></a>dockerfile</h3><p>在jar包路径下创建Dockerfile文件 vi Dockerfile</p>
+<pre><code class="bash"><span class="comment"># 指定基础镜像，本地没有会从dockerHub pull下来 </span>
+FROM java:8 
+
+<span class="comment">#作者 </span>
+MAINTAINER sunneng
+
+<span class="comment"># 把可执行jar包复制到基础镜像的根目录下</span>
+ADD demo.jar /demo.jar
+
+<span class="comment"># 镜像要暴露的端口，如要使用端口，在执行docker run命令时使用-p生效 </span>
+EXPOSE 8089 
+
+<span class="comment"># 在镜像运行为容器后执行的命令 </span>
+ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-jar"</span>,<span class="string">"/demo.jar"</span>]
+
+<span class="comment">#使用 docker build 命令构建镜像，基本语法</span>
+docker build -t docker_jar_demo:v1 . 
+<span class="comment"># -f指定Dockerfile文件的路径 </span>
+<span class="comment"># -t指定镜像名字和TAG </span>
+<span class="comment"># .指当前目录，这里实际上需要一个上下文路径</span>
+
+<span class="comment">#运行自己的springboot镜像</span>
+docker run --name pro -p 80:8089 -d 镜像名:TAG</code></pre>
+<p><img src="/images/1.jpg" alt="docker-dabao-jar-01"><br><img src="/images/docker-dabao-jar-02.png" alt="docker-dabao-jar-02"><br><img src="/images/docker-dabao-jar-03.png" alt></p>
 
       
     </div>
@@ -411,7 +443,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/16/lambda表达式/lambda/" rel="prev" title="lambda">
+              <a href="/2019/11/17/lambda表达式/lambda/" rel="prev" title="lambda">
                 lambda <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -575,7 +607,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#打包方式"><span class="nav-number">1.</span> <span class="nav-text">打包方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#war"><span class="nav-number">1.1.</span> <span class="nav-text">war</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#吧war上传到centos-这里上传到根目录root下的docker文件下"><span class="nav-number">1.1.1.</span> <span class="nav-text">吧war上传到centos,这里上传到根目录root下的docker文件下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拷贝war包到容器"><span class="nav-number">1.1.2.</span> <span class="nav-text">拷贝war包到容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看war是否上传成功"><span class="nav-number">1.1.3.</span> <span class="nav-text">查看war是否上传成功</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问端口-项目名"><span class="nav-number">1.1.4.</span> <span class="nav-text">访问端口+项目名</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#打包方式"><span class="nav-number">1.</span> <span class="nav-text">打包方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1拷贝war到容器中"><span class="nav-number">1.1.</span> <span class="nav-text">1拷贝war到容器中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#吧war上传到centos-这里上传到根目录root下的docker文件下"><span class="nav-number">1.1.1.</span> <span class="nav-text">吧war上传到centos,这里上传到根目录root下的docker文件下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拷贝war包到容器"><span class="nav-number">1.1.2.</span> <span class="nav-text">拷贝war包到容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看war是否上传成功"><span class="nav-number">1.1.3.</span> <span class="nav-text">查看war是否上传成功</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问端口-项目名"><span class="nav-number">1.1.4.</span> <span class="nav-text">访问端口+项目名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2挂载目录启动war"><span class="nav-number">1.2.</span> <span class="nav-text">2挂载目录启动war</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dockerfile"><span class="nav-number">1.3.</span> <span class="nav-text">dockerfile</span></a></li></ol></li></ol></div>
             
 
           </div>
