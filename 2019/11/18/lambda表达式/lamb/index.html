@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="lambda,jdk1.8,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="以下内容为学习lambda进行一个简单梳理： lambda是什么Lambda 是一个匿名函数，我们可以把 Lambda 表达式理解为是一段可以传递的代码（将代码像数据一样进行传递）。 lambda express表达式:(params) -&amp;gt; { … }(params): 参数{ … }: 执行代码函数式接口，我们只需关注传参和执行体，而不需关注整个函数的执行过程，lambda表达式通过()">
+<meta name="keywords" content="lambda,jdk1.8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lambda表达式">
+<meta property="og:url" content="http://yoursite.com/2019/11/18/lambda表达式/lamb/index.html">
+<meta property="og:site_name" content="_blog">
+<meta property="og:description" content="以下内容为学习lambda进行一个简单梳理： lambda是什么Lambda 是一个匿名函数，我们可以把 Lambda 表达式理解为是一段可以传递的代码（将代码像数据一样进行传递）。 lambda express表达式:(params) -&amp;gt; { … }(params): 参数{ … }: 执行代码函数式接口，我们只需关注传参和执行体，而不需关注整个函数的执行过程，lambda表达式通过()">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/lambda/lambda.png">
+<meta property="og:updated_time" content="2019-11-18T10:30:38.100Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lambda表达式">
+<meta name="twitter:description" content="以下内容为学习lambda进行一个简单梳理： lambda是什么Lambda 是一个匿名函数，我们可以把 Lambda 表达式理解为是一段可以传递的代码（将代码像数据一样进行传递）。 lambda express表达式:(params) -&amp;gt; { … }(params): 参数{ … }: 执行代码函数式接口，我们只需关注传参和执行体，而不需关注整个函数的执行过程，lambda表达式通过()">
+<meta name="twitter:image" content="http://yoursite.com/images/lambda/lambda.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/18/lambda表达式/lamb/">
+
+
+
+
+
+  <title>lambda表达式 | _blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">_blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/18/lambda表达式/lamb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunneng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="_blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">lambda表达式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-18T18:30:38+08:00">
+                2019-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jdk1-8/" itemprop="url" rel="index">
+                    <span itemprop="name">jdk1.8</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>以下内容为学习lambda进行一个简单梳理：<br><img src="/images/lambda/lambda.png" alt="lambda"></p>
+<h2 id="lambda是什么"><a href="#lambda是什么" class="headerlink" title="lambda是什么"></a>lambda是什么</h2><p>Lambda 是一个匿名函数，我们可以把 Lambda 表达式理解为是一段可以传递的代码（将代码像数据一样进行传递）。</p>
+<h3 id="lambda-express"><a href="#lambda-express" class="headerlink" title="lambda express"></a>lambda express</h3><p>表达式:(params) -&gt; { … }<br>(params): 参数<br>{ … }: 执行代码<br>函数式接口，我们只需关注传参和执行体，而不需关注整个函数的执行过程，lambda表达式通过() -&gt;{}的方式使开发代码变的容易。如下简单的一个demo：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* new Thread(new <span class="function"><span class="title">Runnable</span></span>() &#123;</span><br><span class="line">*             @Override</span><br><span class="line">*            public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">*                 System.out.println(<span class="string">"hello sunneng"</span>);</span><br><span class="line">*             &#125;</span><br><span class="line">*         &#125;).start();</span><br><span class="line">**/        </span><br><span class="line">==&gt; new Thread(() -&gt; System.out.println(<span class="string">"hello sunneng"</span>)).start(); // 这里用lambda的写法简化了传统Runnable run方法的表写</span><br></pre></td></tr></table></figure>
+
+<h3 id="lambda-express-语法"><a href="#lambda-express-语法" class="headerlink" title="lambda express 语法"></a>lambda express 语法</h3><p>基础语法为(params) -&gt; { … }<br>-&gt;:操作符<br>-&gt;左侧(params)：lambda表达式参数列表<br>-&gt;右侧{ … }:执行功能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#语法格式一：无参，无返回值，Lambda 体只需一条语句</span></span><br><span class="line">() -&gt; System.out.println(<span class="string">"Hello Lambda!"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">#语法格式二：Lambda 需要一个参数</span></span><br><span class="line">(x) -&gt; System.out.println(x)</span><br><span class="line"></span><br><span class="line"><span class="comment">#语法格式三：Lambda 只需要一个参数时，参数的小括号可以省略</span></span><br><span class="line">x -&gt; System.out.println(x)</span><br><span class="line"></span><br><span class="line"><span class="comment">#语法格式四：Lambda 需要两个参数，并且有返回值</span></span><br><span class="line">Comparator&lt;Integer&gt; com = (x, y) -&gt; &#123;</span><br><span class="line"> 	System.out.println(<span class="string">"函数式接口"</span>);</span><br><span class="line">	<span class="built_in">return</span> Integer.compare(x, y);</span><br><span class="line"> &#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">#语法格式五：当 Lambda 体只有一条语句时，return 与大括号可以省略</span></span><br><span class="line">Comparator&lt;Integer&gt; com = (x, y) -&gt; Integer.compare(x, y);</span><br><span class="line"></span><br><span class="line"><span class="comment">#语法格式六：Lambda 表达式的参数列表的数据类型可以省略不写，因为JVM编译器通过上下文推断出，数据类型，即“类型推断”。javac 根据程序的上下文，在后台推断出了参数的类型。</span></span><br><span class="line">(Integer x, Integer y) -&gt; Integer.compare(x, y);</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h2><p>什么是函数式接口？<br>通俗易讲就是只含一个自定义抽象方法的接口。该接口可以继承包含父级的的抽象方法和其他方法，同时jdk1.8引入了默认方法并允许函数式接口含有默认方法。如果这里说的有点模糊，我们可以找一个jdk自带的函数式接口的源码看看。如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface Predicate&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    boolean <span class="built_in">test</span>(T t);</span><br><span class="line"></span><br><span class="line">    default Predicate&lt;T&gt; and(Predicate&lt;? super T&gt; other) &#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="built_in">return</span> (t) -&gt; <span class="built_in">test</span>(t) &amp;&amp; other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    default Predicate&lt;T&gt; <span class="function"><span class="title">negate</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> (t) -&gt; !<span class="built_in">test</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    default Predicate&lt;T&gt; or(Predicate&lt;? super T&gt; other) &#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="built_in">return</span> (t) -&gt; <span class="built_in">test</span>(t) || other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line">    static &lt;T&gt; Predicate&lt;T&gt; isEqual(Object targetRef) &#123;</span><br><span class="line">        <span class="built_in">return</span> (null == targetRef)</span><br><span class="line">                ? Objects::isNull</span><br><span class="line">                : object -&gt; targetRef.equals(object);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#该函数式接口只有一个自定义的抽象方法 boolean test(T t);同时该接口还包含默认方法和静态方法。</span></span><br><span class="line">注:</span><br><span class="line">可以函数式接口包含Object类的其他抽象方法(这时Object抽象方法会被别成抽象接口)</span><br><span class="line">不带FunctionalInterface的接口且只有一个抽象方法时会被默认识别为函数式接口，如：动态代理InvocationHandler</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义函数式接口"><a href="#自定义函数式接口" class="headerlink" title="自定义函数式接口"></a>自定义函数式接口</h3><p>自定义函数式接口:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface MyFunction &#123;</span><br><span class="line">	</span><br><span class="line">	String getValue(String str);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数式接口传参"><a href="#函数式接口传参" class="headerlink" title="函数式接口传参"></a>函数式接口传参</h3><p>   //需求：用于处理字符串<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public String strHandler(String str, MyFunction mf)&#123;</span><br><span class="line">		<span class="built_in">return</span> mf.getValue(str);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>   lambda调用：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strHandler(<span class="string">"hello lambda"</span>, (str) -&gt; str.trim()); //lambda匿名内部类</span><br><span class="line">strHandler(<span class="string">"hello lambda"</span>, String::trim);  //lambda类::方法</span><br></pre></td></tr></table></figure></p>
+<h3 id="四大核心函数式接口"><a href="#四大核心函数式接口" class="headerlink" title="四大核心函数式接口"></a>四大核心函数式接口</h3><table>
+<thead>
+<tr>
+<th>函数式接口</th>
+<th>参数类型</th>
+<th>返回类型</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Consumer<t> 消费型接口</t></td>
+<td>T</td>
+<td>void</td>
+<td>对类型为T的对象应用操 作，包含方法：  void accept(T t)</td>
+</tr>
+<tr>
+<td>Supplier<t> 供给型接口</t></td>
+<td>无</td>
+<td>T</td>
+<td>返回类型为T的对象，包 含方法：T get()</td>
+</tr>
+<tr>
+<td>Function&lt;T, R&gt;  函数型接口</td>
+<td>T</td>
+<td>R</td>
+<td>对类型为T的对象应用操 作，并返回结果。结果 是R类型的对象。包含方 法：R apply(T t);</td>
+</tr>
+<tr>
+<td>Predicate<t> 断定型接口</t></td>
+<td>T</td>
+<td>boolean</td>
+<td>确定类型为T的对象是否 满足某约束，并返回 boolean 值。包含方法 boolean test(T t)</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">package lambda_express_And_StreamAPI.java8;</span><br><span class="line"></span><br><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.function.Consumer;</span><br><span class="line">import java.util.function.Function;</span><br><span class="line">import java.util.function.Predicate;</span><br><span class="line">import java.util.function.Supplier;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * Java8 内置的四大核心函数式接口</span><br><span class="line"> * </span><br><span class="line"> * Consumer&lt;T&gt; : 消费型接口</span><br><span class="line"> * 		void accept(T t);</span><br><span class="line"> * </span><br><span class="line"> * Supplier&lt;T&gt; : 供给型接口</span><br><span class="line"> * 		T get(); </span><br><span class="line"> * </span><br><span class="line"> * Function&lt;T, R&gt; : 函数型接口</span><br><span class="line"> * 		R apply(T t);</span><br><span class="line"> * </span><br><span class="line"> * Predicate&lt;T&gt; : 断言型接口</span><br><span class="line"> * 		boolean <span class="built_in">test</span>(T t);</span><br><span class="line"> * </span><br><span class="line"> */</span><br><span class="line">public class TestLambda3 &#123;</span><br><span class="line">	</span><br><span class="line">	//Predicate&lt;T&gt; 断言型接口：</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">test4</span></span>()&#123;</span><br><span class="line">		List&lt;String&gt; list = Arrays.asList(<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>, <span class="string">"4"</span>, <span class="string">"5"</span>);</span><br><span class="line">		List&lt;String&gt; strList = filterStr(list, (s) -&gt; s.length() &gt; 3);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (String str : strList) &#123;</span><br><span class="line">			System.out.println(str);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//需求：将满足条件的字符串，放入集合中</span><br><span class="line">	public List&lt;String&gt; filterStr(List&lt;String&gt; list, Predicate&lt;String&gt; pre)&#123;</span><br><span class="line">		List&lt;String&gt; strList = new ArrayList&lt;&gt;();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (String str : list) &#123;</span><br><span class="line">			<span class="keyword">if</span>(pre.test(str))&#123;</span><br><span class="line">				strList.add(str);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">return</span> strList;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//Function&lt;T, R&gt; 函数型接口：</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">test3</span></span>()&#123;</span><br><span class="line">		String newStr = strHandler(<span class="string">"hello lambda"</span>, (str) -&gt; str.trim());</span><br><span class="line">		System.out.println(newStr);</span><br><span class="line">		</span><br><span class="line">		String subStr = strHandler(<span class="string">"hello lambda"</span>, (str) -&gt; str.substring(2, 5));</span><br><span class="line">		System.out.println(subStr);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//需求：用于处理字符串</span><br><span class="line">	public String strHandler(String str, Function&lt;String, String&gt; fun)&#123;</span><br><span class="line">		<span class="built_in">return</span> fun.apply(str);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//Supplier&lt;T&gt; 供给型接口 :</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">test2</span></span>()&#123;</span><br><span class="line">		List&lt;Integer&gt; numList = getNumList(10, () -&gt; (int)(Math.random() * 100));</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (Integer num : numList) &#123;</span><br><span class="line">			System.out.println(num);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//需求：产生指定个数的整数，并放入集合中</span><br><span class="line">	public List&lt;Integer&gt; getNumList(int num, Supplier&lt;Integer&gt; sup)&#123;</span><br><span class="line">		List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; num; i++) &#123;</span><br><span class="line">			Integer n = sup.get();</span><br><span class="line">			list.add(n);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">return</span> list;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//Consumer&lt;T&gt; 消费型接口 :</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">test1</span></span>()&#123;</span><br><span class="line">		happy(10000, (m) -&gt; System.out.println(<span class="string">"消费："</span> + m + <span class="string">"元"</span>));</span><br><span class="line">	&#125; </span><br><span class="line">	</span><br><span class="line">	public void happy(double money, Consumer&lt;Double&gt; con)&#123;</span><br><span class="line">		con.accept(money);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法引用与构造器引用"><a href="#方法引用与构造器引用" class="headerlink" title="方法引用与构造器引用"></a>方法引用与构造器引用</h2><p>当要传递给Lambda体的操作，已经有实现的方法了，可以使用方法引用！<br>（实现抽象方法的参数列表，必须与方法引用方法的参数列表保持一致！）</p>
+<h3 id="构造器引用"><a href="#构造器引用" class="headerlink" title="构造器引用"></a>构造器引用</h3><p>类名 :: new,构造器引用 :构造器的参数列表，需要与函数式接口中参数列表保持一致</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Function&lt;String, Integer&gt; fun = Integer::new;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h3><p>方法引用：使用操作符 “::” 将方法名和对象或类的名字分隔开来。<br>如下三种主要使用情况：</p>
+<h4 id="对象-实例方法"><a href="#对象-实例方法" class="headerlink" title="对象::实例方法"></a>对象::实例方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">      BiPredicate&lt;String, String&gt; bp = (x, y) -&gt; x.equals(y);</span><br><span class="line">System.out.println(bp.test(<span class="string">"abcde"</span>, <span class="string">"abcde"</span>));</span><br><span class="line">   ===&gt;</span><br><span class="line">BiPredicate&lt;String, String&gt; bp2 = String::equals;</span><br><span class="line">System.out.println(bp2.test(<span class="string">"abc"</span>, <span class="string">"abc"</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="类-静态方法"><a href="#类-静态方法" class="headerlink" title="类::静态方法"></a>类::静态方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      Comparator&lt;Integer&gt; com = (x, y) -&gt; Integer.compare(x, y);</span><br><span class="line">===&gt;</span><br><span class="line">Comparator&lt;Integer&gt; com2 = Integer::compare;</span><br></pre></td></tr></table></figure>
+
+<h4 id="类-实例方法"><a href="#类-实例方法" class="headerlink" title="类::实例方法"></a>类::实例方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">public class Employee &#123;</span><br><span class="line"></span><br><span class="line">	private int id;</span><br><span class="line">	private String name;</span><br><span class="line">	private int age;</span><br><span class="line">	private double salary;</span><br><span class="line"></span><br><span class="line">	public <span class="function"><span class="title">Employee</span></span>() &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public Employee(String name) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public Employee(String name, int age) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">		this.age = age;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public Employee(int id, String name, int age, double salary) &#123;</span><br><span class="line">		this.id = id;</span><br><span class="line">		this.name = name;</span><br><span class="line">		this.age = age;</span><br><span class="line">		this.salary = salary;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getId</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setId(int id) &#123;</span><br><span class="line">		this.id = id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getName</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int <span class="function"><span class="title">getAge</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> age;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setAge(int age) &#123;</span><br><span class="line">		this.age = age;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public double <span class="function"><span class="title">getSalary</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> salary;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setSalary(double salary) &#123;</span><br><span class="line">		this.salary = salary;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">show</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"测试方法引用！"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public int <span class="function"><span class="title">hashCode</span></span>() &#123;</span><br><span class="line">		final int prime = 31;</span><br><span class="line">		int result = 1;</span><br><span class="line">		result = prime * result + age;</span><br><span class="line">		result = prime * result + id;</span><br><span class="line">		result = prime * result + ((name == null) ? 0 : name.hashCode());</span><br><span class="line">		long temp;</span><br><span class="line">		temp = Double.doubleToLongBits(salary);</span><br><span class="line">		result = prime * result + (int) (temp ^ (temp &gt;&gt;&gt; 32));</span><br><span class="line">		<span class="built_in">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public boolean equals(Object obj) &#123;</span><br><span class="line">		<span class="keyword">if</span> (this == obj)</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">if</span> (obj == null)</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">if</span> (getClass() != obj.getClass())</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		Employee other = (Employee) obj;</span><br><span class="line">		<span class="keyword">if</span> (age != other.age)</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">if</span> (id != other.id)</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">if</span> (name == null) &#123;</span><br><span class="line">			<span class="keyword">if</span> (other.name != null)</span><br><span class="line">				<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (!name.equals(other.name))</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">if</span> (Double.doubleToLongBits(salary) != Double.doubleToLongBits(other.salary))</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public String <span class="function"><span class="title">toString</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"Employee [id="</span> + id + <span class="string">", name="</span> + name + <span class="string">", age="</span> + age + <span class="string">", salary="</span> + salary + <span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">test</span>方法:</span><br><span class="line">        Employee emp = new Employee(1051, <span class="string">"san"</span>, 3, 56.99);</span><br><span class="line">		Supplier&lt;String&gt; sup = () -&gt; emp.getName();</span><br><span class="line">		System.out.println(sup.get());</span><br><span class="line">		Supplier&lt;String&gt; sup2 = emp::getName;</span><br><span class="line">		System.out.println(sup2.get());</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组引用"><a href="#数组引用" class="headerlink" title="数组引用"></a>数组引用</h3><p>类型[] :: new</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      Function&lt;Integer, String[]&gt; fun = (args) -&gt; new String[args];</span><br><span class="line">String[] strs = fun.apply(10);</span><br><span class="line">System.out.println(strs.length);</span><br><span class="line">===&gt;</span><br><span class="line">Function&lt;Integer, Employee[]&gt; fun2 = Employee[] :: new;</span><br><span class="line">Employee[] emps = fun2.apply(20);</span><br><span class="line">System.out.println(emps.length);</span><br></pre></td></tr></table></figure>
+
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>  本文主要是对lambda系统地进行了一个简短的小结，其包含了lambda语法、函数式接口、常用的函数式接口以及lambda方法引用。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/lambda/" rel="tag"># lambda</a>
+          
+            <a href="/tags/jdk1-8/" rel="tag"># jdk1.8</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/17/lambda表达式/lambda/" rel="next" title="lambda">
+                <i class="fa fa-chevron-left"></i> lambda
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">sunneng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/grjywszn" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:sunzn721@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/grjywszn" title="github" target="_blank">github</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lambda是什么"><span class="nav-number">1.</span> <span class="nav-text">lambda是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lambda-express"><span class="nav-number">1.1.</span> <span class="nav-text">lambda express</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lambda-express-语法"><span class="nav-number">1.2.</span> <span class="nav-text">lambda express 语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式接口"><span class="nav-number">2.</span> <span class="nav-text">函数式接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义函数式接口"><span class="nav-number">2.1.</span> <span class="nav-text">自定义函数式接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数式接口传参"><span class="nav-number">2.2.</span> <span class="nav-text">函数式接口传参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四大核心函数式接口"><span class="nav-number">2.3.</span> <span class="nav-text">四大核心函数式接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法引用与构造器引用"><span class="nav-number">3.</span> <span class="nav-text">方法引用与构造器引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造器引用"><span class="nav-number">3.1.</span> <span class="nav-text">构造器引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法引用"><span class="nav-number">3.2.</span> <span class="nav-text">方法引用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象-实例方法"><span class="nav-number">3.2.1.</span> <span class="nav-text">对象::实例方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类-静态方法"><span class="nav-number">3.2.2.</span> <span class="nav-text">类::静态方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类-实例方法"><span class="nav-number">3.2.3.</span> <span class="nav-text">类::实例方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组引用"><span class="nav-number">3.3.</span> <span class="nav-text">数组引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunneng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
